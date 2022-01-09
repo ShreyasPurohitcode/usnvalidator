@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> USN validator </title>
+        <link rel="stylesheet" href="style.css">
+        <script type="text/javascript">
+            function formValidator()
+            {
+                var usn = document.getElementById('usnFrm');
+                usnExp=/[1-4][A-Z][A-Z]\d{2}[A-Z][A-Z]\d{3}$/
+                if(usn.value.length==0)
+                {
+                    alert("USN is empty.");
+                    usn.focus();
+                    return false;
+                }
+                else if(!usn.value.match(usnExp))
+                {
+                    alert("USN should be in VTU USN format, eg., 3PD15CS001");
+                    usn.focus();
+                    return false;
+                }
+                alert("USN: "+usn.value+" is in correct format");
+                return true;
+            }
+        </script>
+    </head>
+    <body>
+        <h1>Form Validation</h1>
+        <form onSubmit = "formValidator()">
+            Enter your VTU USN : <input type="text" id="usnFrm"/>
+            <br/>
+            <div>
+                <input type ="submit" value="SUBMIT"/>
+            </div>
+        </form>
+    </body>
+</html>
